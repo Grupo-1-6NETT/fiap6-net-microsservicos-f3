@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Cadastro.Auth.Domain.IToken;
 using Cadastro.Auth.Infra.Services;
-using System.Text;
 
 namespace Cadastro.Auth.Infra
 {
@@ -14,16 +13,9 @@ namespace Cadastro.Auth.Infra
     {
         public static void AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            // Verifica se a string de conexão está presente
-            var connectionString = configuration.GetConnectionString("SQLiteConnection");
-            if (string.IsNullOrEmpty(connectionString))
-            {
-                throw new ArgumentNullException("Connection string 'SQLiteConnection' is missing.");
-            }
-
-            // Adiciona o contexto do banco de dados
+            // Substitui SQLite por InMemory Database
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlite(connectionString));
+                options.UseInMemoryDatabase("InMemoryDb"));
 
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
