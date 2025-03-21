@@ -38,7 +38,10 @@ namespace Cadastro.Auth.Infra.Services
                 ]),
 
                 Expires = DateTime.UtcNow.AddHours(8),
-                
+
+                Issuer = "https://localhost:7267", // Serviço Auth
+                Audience = "https://localhost:7199", // Ocelot Gateway
+
                 SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature)
