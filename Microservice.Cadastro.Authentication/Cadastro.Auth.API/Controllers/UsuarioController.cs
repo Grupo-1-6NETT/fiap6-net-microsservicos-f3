@@ -28,7 +28,7 @@ public class UsuarioController : ControllerBase
     ///  {
     ///     "nome": "batman",
     ///     "senha": "P4ssw0rd",
-    ///     "permissao": "admin",    
+    ///     "permissao": "1" para admin ou "0" para usuario,    
     /// }
     /// </remarks>
     /// <param name="command">Comando com os dados do Usuário</param>
