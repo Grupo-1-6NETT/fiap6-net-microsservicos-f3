@@ -1,0 +1,20 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7199"
+  },
+  "Routes": [
+    //API.CREATE
+    {
+      "DownstreamPathTemplate": "/WeatherForecast",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7260
+        }
+      ],
+      "UpstreamPathTemplate": "/teste",
+      "UpstreamHttpMethod": [ "Get" ]
+    }
+  ]
+}
