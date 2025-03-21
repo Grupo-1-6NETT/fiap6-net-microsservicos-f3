@@ -19,13 +19,13 @@ public class RabbitMQService : IRabbitMQService
     {
         _factory = new ConnectionFactory()
         {
-            HostName = config["RabbitMQ:HostName"],
-            UserName = config["RabbitMQ:UserName"],
-            Password = config["RabbitMQ:Password"]
+            HostName = config["RabbitMQ:HostName"] ?? string.Empty,
+            UserName = config["RabbitMQ:UserName"] ?? string.Empty,
+            Password = config["RabbitMQ:Password"] ?? string.Empty,
         };
-        _queue = config["RabbitMQ:QueueName"];
-        _exchange = config["RabbitMQ:Exchange"];
-        _dlq = config["RabbitMQ:DeadLetterQueue"];
+        _queue = config["RabbitMQ:QueueName"] ?? string.Empty;
+        _exchange = config["RabbitMQ:Exchange"] ?? string.Empty;
+        _dlq = config["RabbitMQ:DeadLetterQueue"] ?? string.Empty;
         
         Setup().Wait();
     }
