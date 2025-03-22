@@ -1,6 +1,6 @@
-using Domain.Models;
+using ContatoDb.Core.Models;
 
-namespace Core.Data;
+namespace ContatoDb.Core.Data;
 using Microsoft.EntityFrameworkCore;
 
 public class AppDbContext : DbContext

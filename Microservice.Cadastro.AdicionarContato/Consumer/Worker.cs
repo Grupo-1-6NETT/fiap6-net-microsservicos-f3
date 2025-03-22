@@ -2,8 +2,8 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
 using System.Text.Json;
-using Domain.Interfaces;
-using Domain.Models;
+using ContatoDb.Core.Interfaces;
+using ContatoDb.Core.Models;
 
 namespace Consumer;
 public class Worker : BackgroundService

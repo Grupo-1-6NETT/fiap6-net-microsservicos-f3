@@ -1,8 +1,8 @@
-using Core.Data;
-using Domain.Interfaces;
-using Domain.Models;
+using ContatoDb.Core.Data;
+using ContatoDb.Core.Interfaces;
+using ContatoDb.Core.Models;
 
-namespace Core.Repository;
+namespace ContatoDb.Core.Repository;
 
 public class ContatoRepository(AppDbContext context) : IContatoRepository
 {

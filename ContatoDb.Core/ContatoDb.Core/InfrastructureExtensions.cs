@@ -1,11 +1,11 @@
-﻿using Core.Data;
-using Core.Repository;
-using Domain.Interfaces;
+﻿using ContatoDb.Core.Data;
+using ContatoDb.Core.Repository;
+using ContatoDb.Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Core;
+namespace ContatoDb.Core;
 
 public static class InfrastructureExtensions
 {

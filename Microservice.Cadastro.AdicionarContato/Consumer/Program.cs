@@ -1,5 +1,5 @@
 using Consumer;
-using Infrastructure;
+using ContatoDb.Core;
 
 var builder = Host.CreateApplicationBuilder(args);
 builder.Services.AddHostedService<Worker>();
