@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cadastro.Auth.Infra", "Cada
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cadastro.Auth.API", "Cadastro.Auth.API\Cadastro.Auth.API.csproj", "{F07F6F38-CD16-47FC-B2AC-44868C480065}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadastro.Auth.Application", "Application\Cadastro.Auth.Application.csproj", "{D3320A78-5F18-4593-A878-8F855D0A61B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cadastro.Auth.Application", "Application\Cadastro.Auth.Application.csproj", "{D3320A78-5F18-4593-A878-8F855D0A61B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5DD847B4-1453-4F07-B247-54DA056A16B2}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		Dockerfile = Dockerfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
