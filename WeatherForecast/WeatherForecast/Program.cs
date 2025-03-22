@@ -13,9 +13,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.RequireHttpsMetadata = false;
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuer = false, // Temporariamente desativado
-            ValidateAudience = false, // Temporariamente desativado
-            ValidateLifetime = false, // Temporariamente desativado
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true, 
             ValidateIssuerSigningKey = true,
             ValidIssuer = "http://auth:8082", // URL do serviço de autenticação no Docker
             ValidAudience = "http://gatewayapi:8080", // URL do serviço de gateway no Docker
