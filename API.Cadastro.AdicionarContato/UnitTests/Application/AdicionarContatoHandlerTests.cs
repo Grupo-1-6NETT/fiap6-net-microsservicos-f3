@@ -1,11 +1,10 @@
 ﻿using Application.Contato;
-using Application.Services;
 using Application.Exceptions;
-using Domain.Models;
-using FluentValidation;
+using Application.Services;
+using Domain;
 using Moq;
 
-namespace UnitTest.Application.ContatoTests;
+namespace UnitTests.Application;
 
 public class AdicionarContatoHandlerTests
 {
@@ -31,7 +30,7 @@ public class AdicionarContatoHandlerTests
 
         var result = await _handler.Handle(command, CancellationToken.None);
 
-        _rabbitMqServiceMock.Verify(x => x.PublicarMensagem(It.IsAny<Contato>()), Times.Once);     
+        _rabbitMqServiceMock.Verify(x => x.PublicarMensagem(It.IsAny<AdicionarContatoDto>()), Times.Once);     
         
         _rabbitMqServiceMock.Invocations.Clear();
     }
