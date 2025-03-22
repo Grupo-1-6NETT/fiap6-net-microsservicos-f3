@@ -5,7 +5,14 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F04447DA-7F96-4D78-A908-2A65E4F02429}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadastro.Gateway.API", "src\Cadastro.Gateway.API\Cadastro.Gateway.API.csproj", "{FEB9CE0D-8D3A-450B-817F-39AF61CAA6CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cadastro.Gateway.API", "src\Cadastro.Gateway.API\Cadastro.Gateway.API.csproj", "{FEB9CE0D-8D3A-450B-817F-39AF61CAA6CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solucion Items", "Solucion Items", "{08983CB4-2398-44D7-A138-CFE783AA5CD0}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		Dockerfile = Dockerfile
+		prometheus.yml = prometheus.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

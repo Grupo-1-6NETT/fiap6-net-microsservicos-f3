@@ -1,0 +1,18 @@
+services:
+  auth:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5002:8082"
+      - "5003:8083"
+    networks:
+      monitoring:
+        ipv4_address: 192.168.1.101
+
+networks:
+  monitoring:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
