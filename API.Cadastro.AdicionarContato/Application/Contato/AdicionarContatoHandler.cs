@@ -1,4 +1,5 @@
 ﻿using Application.Services;
+using Domain;
 using MediatR;
 
 namespace Application.Contato;
@@ -17,9 +18,9 @@ public class AdicionarContatoHandler : IRequestHandler<AdicionarContatoCommand, 
     
         request.Validate();
 
-        var contato = new Domain.Models.Contato
-        {
-            Id = Guid.NewGuid(),
+        var contato = new AdicionarContatoDto()
+        { 
+            TransportId= Guid.NewGuid(),
             Nome = request.Nome,
             Telefone = request.Telefone,
             DDD = request.DDD,
@@ -28,6 +29,6 @@ public class AdicionarContatoHandler : IRequestHandler<AdicionarContatoCommand, 
 
         _rabbitmq.PublicarMensagem(contato);
 
-        return Task.FromResult(contato.Id);
+        return Task.FromResult(contato.TransportId);
     }
 }

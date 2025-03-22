@@ -1,12 +1,11 @@
-using Application.Contato;
 using API.Controllers;
+using Application.Contato;
 using Application.Exceptions;
-using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 
-namespace UnitTests;
+namespace UnitTests.Api;
 
 public class AdicionarContatoTests
 {
