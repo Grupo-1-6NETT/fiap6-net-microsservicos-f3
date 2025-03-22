@@ -23,7 +23,7 @@
     // API.AUTH.TOKEN
     {
       "DownstreamPathTemplate": "/Token",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "auth",
@@ -36,7 +36,7 @@
     // API.AUTH.USUARIO
     {
       "DownstreamPathTemplate": "/Usuario",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "auth",
@@ -49,7 +49,7 @@
     // API.AUTH.USUARIO *PROTEGIDO*
     {
       "DownstreamPathTemplate": "/Usuario",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "auth",
