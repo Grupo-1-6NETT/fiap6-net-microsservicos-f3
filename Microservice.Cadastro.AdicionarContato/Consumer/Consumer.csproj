@@ -8,8 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ContatoDb.Core" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.3" />
     <PackageReference Include="RabbitMQ.Client" Version="7.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ContatoDb.Core">
+      <HintPath>..\..\ContatoDb.Core\ContatoDb.Core\bin\Release\net8.0\ContatoDb.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

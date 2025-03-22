@@ -15,9 +15,9 @@ public class Worker : BackgroundService
     private IConnection _connection;
     private IContatoRepository _contatoRepository;
 
-    public Worker(IConfiguration config, ILogger<Worker> logger, IContatoRepository contatoRepository)
+    public Worker(IConfiguration config, ILogger<Worker> logger)
     {
-        _contatoRepository = contatoRepository;
+        //_contatoRepository = contatoRepository;
         _logger = logger;
         _factory = new ConnectionFactory()
         {
