@@ -39,8 +39,8 @@ namespace Cadastro.Auth.Infra.Services
 
                 Expires = DateTime.UtcNow.AddHours(8),
 
-                Issuer = "https://localhost:7267", // Serviço Auth
-                Audience = "https://localhost:7199", // Ocelot Gateway
+                Issuer = "http://auth:8082", // Serviço Auth Docker
+                Audience = "http://gatewayapi:8080", // Ocelot Gateway Docker
 
                 SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(key),

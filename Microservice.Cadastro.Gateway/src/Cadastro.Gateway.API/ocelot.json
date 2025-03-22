@@ -1,16 +1,19 @@
 {
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:5001" // Acesso externo via HTTPS
+    "BaseUrl": "http://gatewayapi:8080",
+    "AuthenticationOptions": {
+      "AuthenticationProviderKey": "Bearer"
+    }
   },
   "Routes": [
-    // API.TESTE *PROTEGIDO*
+    // API.TESTE Weather *PROTEGIDO*
     {
       "DownstreamPathTemplate": "/WeatherForecast",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7260
+          "Host": "weather",
+          "Port": 8084
         }
       ],
       "UpstreamPathTemplate": "/teste",

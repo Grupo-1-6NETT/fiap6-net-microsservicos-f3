@@ -17,7 +17,7 @@ var key = Encoding.UTF8.GetBytes("45262B37D9B63986B437DEBD5C8EA45262B37D9B63986B
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer("Bearer", options =>
     {
-        options.Authority = "https://localhost:7267"; // Auth Service
+        options.Authority = "http://auth:8082"; // URL do serviço Auth
         options.RequireHttpsMetadata = false;
         options.TokenValidationParameters = new TokenValidationParameters
         {
@@ -25,8 +25,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = "https://localhost:7267",
-            ValidAudience = "https://localhost:7199",
+            ValidIssuer = "http://auth:8082", // Emissor do token
+            ValidAudience = "http://gatewayapi:8080", // Público do token
             IssuerSigningKey = new SymmetricSecurityKey(key)
         };
     });

@@ -1,0 +1,13 @@
+services:
+  weather: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5004:8084"
+      - "5005:8085"
+    networks:
+      - monitoring
+networks:
+  monitoring:
+    external: true 
