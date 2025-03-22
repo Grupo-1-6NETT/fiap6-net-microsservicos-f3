@@ -7,8 +7,7 @@ services:
       - "5000:8080"
       - "5001:8081"
     networks:
-      monitoring:
-        ipv4_address: 192.168.0.100
+      - monitoring
 
   prometheus:
     image: prom/prometheus:latest
@@ -17,28 +16,26 @@ services:
     ports:
       - "9090:9090"
     networks:
-      monitoring:
-        ipv4_address: 192.168.0.101
+      - monitoring
 
   grafana:
     image: grafana/grafana:latest
     ports:
       - "3000:3000"
     networks:
-      monitoring:
-        ipv4_address: 192.168.0.102
+      - monitoring
 
   node-exporter:
     image: prom/node-exporter:latest
     ports:
       - "9100:9100"
     networks:
-      monitoring:
-        ipv4_address: 192.168.0.103
+      - monitoring
 
 networks:
   monitoring:
     driver: bridge
+    name: monitoring  # Define um nome fixo para a rede
     ipam:
-        config:
-          - subnet: 192.168.0.0/24
+      config:
+        - subnet: 192.168.0.0/24
