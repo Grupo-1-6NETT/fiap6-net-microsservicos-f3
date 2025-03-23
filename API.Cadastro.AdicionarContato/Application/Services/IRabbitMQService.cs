@@ -1,6 +1,8 @@
-﻿namespace Application.Services;
+﻿using Domain;
+
+namespace Application.Services;
 
 public interface IRabbitMQService
 {
-    Task PublicarMensagem<T>(T mensagem);
+    Task PublicarMensagem(AdicionarContatoDto mensagem);
 }
