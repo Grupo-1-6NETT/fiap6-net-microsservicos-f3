@@ -1,4 +1,5 @@
 ﻿using Application.Services;
+using Domain;
 using MediatR;
 
 namespace Application.Contato;
@@ -7,7 +8,9 @@ public class RemoverContatoHandler(IRabbitMQService rabbitmq) : IRequestHandler<
 {
     public async Task<Guid> Handle(RemoverContatoCommand request, CancellationToken cancellationToken)
     {
-        await rabbitmq.PublicarMensagem(request);
+        var contato = new RemoverContatoDto { ContatoId = request.Id };
+        
+        await rabbitmq.PublicarMensagem(contato);
 
         return request.Id;
     }

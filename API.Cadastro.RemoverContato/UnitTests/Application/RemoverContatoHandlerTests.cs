@@ -1,5 +1,6 @@
 ﻿using Application.Contato;
 using Application.Services;
+using Domain;
 using Moq;
 
 namespace UnitTests.Application;
@@ -23,7 +24,7 @@ public class RemoverContatoHandlerTests
 
         var result = await _handler.Handle(command, CancellationToken.None);
 
-        _rabbitMqServiceMock.Verify(x => x.PublicarMensagem(It.IsAny<RemoverContatoCommand>()), Times.Once);     
+        _rabbitMqServiceMock.Verify(x => x.PublicarMensagem(It.IsAny<RemoverContatoDto>()), Times.Once);     
         
         _rabbitMqServiceMock.Invocations.Clear();
     }
