@@ -1,0 +1,14 @@
+services:
+  auth:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5002:8082"
+      - "5003:8083"
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    external: true 

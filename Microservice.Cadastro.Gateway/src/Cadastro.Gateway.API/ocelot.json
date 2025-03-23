@@ -1,0 +1,70 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "http://gatewayapi:8080",
+    "AuthenticationOptions": {
+      "AuthenticationProviderKey": "Bearer"
+    }
+  },
+  "Routes": [
+    // API.TESTE Weather *PROTEGIDO*
+    {
+      "DownstreamPathTemplate": "/WeatherForecast",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "weather",
+          "Port": 8084
+        }
+      ],
+      "UpstreamPathTemplate": "/teste",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    // API.AUTH.TOKEN
+    {
+      "DownstreamPathTemplate": "/Token",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth",
+          "Port": 8082
+        }
+      ],
+      "UpstreamPathTemplate": "/Token",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    // API.AUTH.USUARIO
+    {
+      "DownstreamPathTemplate": "/Usuario",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth",
+          "Port": 8082
+        }
+      ],
+      "UpstreamPathTemplate": "/Usuario",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    // API.AUTH.USUARIO *PROTEGIDO*
+    {
+      "DownstreamPathTemplate": "/Usuario",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth",
+          "Port": 8082
+        }
+      ],
+      "UpstreamPathTemplate": "/usuario",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    }
+  ]
+}
