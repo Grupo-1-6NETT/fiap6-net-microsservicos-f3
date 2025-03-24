@@ -1,0 +1,13 @@
+services:
+  adicionarcontatos: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5006:8086"
+      - "5007:8087"
+    networks:
+      - monitoring
+networks:
+  monitoring:
+    external: true 

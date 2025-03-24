@@ -1,0 +1,13 @@
+services:
+  atualizarcontatos: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5008:8088"
+      - "5009:8089"
+    networks:
+      - monitoring
+networks:
+  monitoring:
+    external: true 

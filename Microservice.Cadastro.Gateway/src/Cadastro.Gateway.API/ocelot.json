@@ -65,6 +65,57 @@
         "AuthenticationProviderKey": "Bearer",
         "AllowedScopes": []
       }
+    },
+    // API.Adicionar Contato *PROTEGIDO*
+    {
+      "DownstreamPathTemplate": "/AdicionarContato",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adicionarcontatos",
+          "Port": 8086
+        }
+      ],
+      "UpstreamPathTemplate": "/AdicionarContato",
+      "UpstreamHttpMethod": [ "Post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    // API.Atualizar Contato *PROTEGIDO*
+    {
+      "DownstreamPathTemplate": "/AtualizarContato",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "atualizarcontatos",
+          "Port": 8088
+        }
+      ],
+      "UpstreamPathTemplate": "/AtualizarContato",
+      "UpstreamHttpMethod": [ "Patch" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    // API.Remover Contato *PROTEGIDO*
+    {
+      "DownstreamPathTemplate": "/RemoverContato",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "atualizarcontatos",
+          "Port": 8090
+        }
+      ],
+      "UpstreamPathTemplate": "/RemoverContato",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     }
   ]
 }
