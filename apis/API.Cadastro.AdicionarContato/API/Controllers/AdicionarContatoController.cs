@@ -1,14 +1,17 @@
 ﻿using Application.Contato;
 using Application.Exceptions;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
+[Authorize]
 [Route("[controller]")]
 [ApiController]
 public class AdicionarContatoController(IMediator mediator) : ControllerBase
 {
+    [Authorize]
     [HttpPost]
     /// <summary>
     /// Adiciona um Contato na base de dados 

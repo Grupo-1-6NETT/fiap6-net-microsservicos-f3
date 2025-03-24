@@ -1,14 +1,17 @@
 ﻿using Application.Contato;
 using Application.Exceptions;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
+[Authorize]
 [Route("[controller]")]
 [ApiController]
 public class AtualizarContatoController(IMediator mediator) : ControllerBase
-{    
+{
+    [Authorize]
     [HttpPatch]
     /// <summary>
     /// Atualiza um Contato na base de dados 

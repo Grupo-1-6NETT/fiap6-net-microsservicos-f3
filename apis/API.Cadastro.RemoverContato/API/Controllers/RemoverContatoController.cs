@@ -1,15 +1,17 @@
 ﻿using Application.Contato;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
+[Authorize]
 [Route("[controller]")]
 [ApiController]
 public class RemoverContatoController(IMediator mediator) : ControllerBase
 {
     private readonly IMediator _mediator = mediator;
-    
+    [Authorize]
     [HttpDelete("{id}")]
     /// <summary>
     /// Remove o contato na base de dados com o ID informado
