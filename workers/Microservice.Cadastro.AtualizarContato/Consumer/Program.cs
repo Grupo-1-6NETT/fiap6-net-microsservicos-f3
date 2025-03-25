@@ -8,8 +8,9 @@ builder.Services.AddHostedService<Worker>();
 
 var configuration = builder.Configuration;
 
-var sqliteConnString = configuration.GetSection("SQLiteConnection").Value;
-builder.Services.AddContatoDbCoreServices(sqliteConnString);
+var sqliteConnString = configuration.GetSection("DB_CONNSTRING").Value;
+if(sqliteConnString != null)
+    builder.Services.UseContatoDBSqlServer(sqliteConnString);
 
 
 var fila = configuration.GetSection("RabbitMQ")["QueueName"] ?? string.Empty;
