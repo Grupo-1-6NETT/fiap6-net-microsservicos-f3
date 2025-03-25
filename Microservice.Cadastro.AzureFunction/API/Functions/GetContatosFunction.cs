@@ -19,16 +19,32 @@ namespace API.Functions
 
         [Function("GetContatosFunction")]
         public async Task<HttpResponseData> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "contatos")] HttpRequestData req)
+            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "contatos/{ddd?}/{id?}")] HttpRequestData req,
+            string? ddd,
+            string? id)
         {
             _logger.LogInformation("Recebida uma solicitação para buscar contatos.");
 
             string connectionString = Environment.GetEnvironmentVariable("SqlConnectionString");
-
             using var connection = new SqlConnection(connectionString);
-            var contatos = await connection.QueryAsync("SELECT * FROM Contatos");
 
-            // Criando resposta
+            IEnumerable<dynamic> contatos;
+
+            if (!string.IsNullOrEmpty(id)) // Busca por ID
+            {
+                _logger.LogInformation($"Buscando contato pelo ID: {id}");
+                contatos = await connection.QueryAsync("SELECT * FROM Contatos WHERE Id = @Id", new { Id = id });
+            }
+            else if (!string.IsNullOrEmpty(ddd)) // Busca por DDD
+            {
+                _logger.LogInformation($"Buscando contatos pelo DDD: {ddd}");
+                contatos = await connection.QueryAsync("SELECT * FROM Contatos WHERE DDD = @DDD", new { DDD = ddd });
+            }
+            else // Retorna todos os contatos
+            {
+                contatos = await connection.QueryAsync("SELECT * FROM Contatos");
+            }
+
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "application/json; charset=utf-8");
             await response.WriteStringAsync(JsonSerializer.Serialize(contatos));
