@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ContatoDb.Core\ContatoDb.Core\ContatoDb.Core.csproj" />
+    <ProjectReference Include="..\ContatoDb.Core\ContatoDb.Core.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 </Project>
