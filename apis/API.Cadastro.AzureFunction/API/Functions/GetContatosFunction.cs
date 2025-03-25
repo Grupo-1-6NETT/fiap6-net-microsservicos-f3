@@ -18,12 +18,14 @@ namespace API.Functions
         }
 
         [Function("GetContatosFunction")]
-        public async Task<HttpResponseData> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "contatos/{ddd?}/{id?}")] HttpRequestData req,
-            string? ddd,
-            string? id)
+        public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "contatos")] HttpRequestData req)
         {
-            _logger.LogInformation("Recebida uma solicitação para buscar contatos.");
+            var query = System.Web.HttpUtility.ParseQueryString(req.Url.Query);
+            string ddd = query["ddd"];
+            string id = query["id"];
+
+        
+        _logger.LogInformation("Recebida uma solicitação para buscar contatos.");
 
             string connectionString = Environment.GetEnvironmentVariable("SqlConnectionString");
             using var connection = new SqlConnection(connectionString);
