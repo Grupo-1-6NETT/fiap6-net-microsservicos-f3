@@ -129,42 +129,42 @@ jobs:
       - name: Build solution
         run: dotnet build apis/API.Cadastro.AzureFunction/API.Cadastro.AzureFunction.sln --no-restore --configuration Release
 
-build-and-test-consumer-contatodb-contato:
-  runs-on: ubuntu-latest
+  build-and-test-consumer-contatodb-contato:
+    runs-on: ubuntu-latest
 
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 8.0
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0
 
-    - name: Restore dependencies
-      run: dotnet restore workers/ContatoDb.Core/ContatoDb.Core.sln
+      - name: Restore dependencies
+        run: dotnet restore workers/ContatoDb.Core/ContatoDb.Core.sln
 
-    - name: Build solution
-      run: dotnet build workers/ContatoDb.Core/ContatoDb.Core.sln --no-restore --configuration Release
+      - name: Build solution
+        run: dotnet build workers/ContatoDb.Core/ContatoDb.Core.sln --no-restore --configuration Release
 
-build-and-test-consumer-adicionarcontato-contato:
-  runs-on: ubuntu-latest
-  needs: build-and-test-consumer-contatodb-contato  
+  build-and-test-consumer-adicionarcontato-contato:
+    runs-on: ubuntu-latest
+    needs: build-and-test-consumer-contatodb-contato
 
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 8.0
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0
 
-    - name: Restore dependencies
-      run: dotnet restore workers/Microservice.Cadastro.AdicionarContato/Microservice.Cadastro.AdicionarContato.sln
+      - name: Restore dependencies
+        run: dotnet restore workers/Microservice.Cadastro.AdicionarContato/Microservice.Cadastro.AdicionarContato.sln
 
-    - name: Build solution
-      run: dotnet build workers/Microservice.Cadastro.AdicionarContato/Microservice.Cadastro.AdicionarContato.sln --no-restore --configuration Release
+      - name: Build solution
+        run: dotnet build workers/Microservice.Cadastro.AdicionarContato/Microservice.Cadastro.AdicionarContato.sln --no-restore --configuration Release
 
   build-and-test-consumer-atualizarcontato-contato:
     runs-on: ubuntu-latest
