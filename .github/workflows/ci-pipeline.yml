@@ -9,9 +9,9 @@ on:
       - main
 
 jobs:
+  # Jobs para APIs (independentes)
   build-and-test-adicionar-contato:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -32,7 +32,6 @@ jobs:
 
   build-and-test-atualizar-contato:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -53,7 +52,6 @@ jobs:
 
   build-and-test-remover-contato:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -74,7 +72,6 @@ jobs:
 
   build-and-test-auth-contato:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -95,7 +92,6 @@ jobs:
 
   build-and-test-gateway-contato:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -113,7 +109,6 @@ jobs:
 
   build-and-test-azurefunction-contato:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -129,9 +124,9 @@ jobs:
       - name: Build solution
         run: dotnet build apis/API.Cadastro.AzureFunction/API.Cadastro.AzureFunction.sln --no-restore --configuration Release
 
+  # Jobs para Workers (com dependência em ContatoDb.Core)
   build-and-test-consumer-contatodb-contato:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -147,18 +142,37 @@ jobs:
       - name: Build solution
         run: dotnet build workers/ContatoDb.Core/ContatoDb.Core.sln --no-restore --configuration Release
 
+      - name: Pack ContatoDb.Core
+        run: |
+          mkdir -p ./nuget-packages
+          dotnet pack workers/ContatoDb.Core/ContatoDb.Core.csproj --configuration Release --output ./nuget-packages
+
+      - name: Upload NuGet package
+        uses: actions/upload-artifact@v3
+        with:
+          name: contatodb-core-package
+          path: ./nuget-packages/ContatoDb.Core.*.nupkg
+
   build-and-test-consumer-adicionarcontato-contato:
     runs-on: ubuntu-latest
     needs: build-and-test-consumer-contatodb-contato
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Download NuGet package
+        uses: actions/download-artifact@v3
+        with:
+          name: contatodb-core-package
+          path: ./nuget-packages
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 8.0
+
+      - name: Add local NuGet source
+        run: dotnet nuget add source ./nuget-packages --name local-packages
 
       - name: Restore dependencies
         run: dotnet restore workers/Microservice.Cadastro.AdicionarContato/Microservice.Cadastro.AdicionarContato.sln
@@ -169,15 +183,23 @@ jobs:
   build-and-test-consumer-atualizarcontato-contato:
     runs-on: ubuntu-latest
     needs: build-and-test-consumer-contatodb-contato
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Download NuGet package
+        uses: actions/download-artifact@v3
+        with:
+          name: contatodb-core-package
+          path: ./nuget-packages
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 8.0
+
+      - name: Add local NuGet source
+        run: dotnet nuget add source ./nuget-packages --name local-packages
 
       - name: Restore dependencies
         run: dotnet restore workers/Microservice.Cadastro.AtualizarContato/Microservice.Cadastro.AtualizarContato.sln
@@ -188,15 +210,23 @@ jobs:
   build-and-test-consumer-removercontato-contato:
     runs-on: ubuntu-latest
     needs: build-and-test-consumer-contatodb-contato
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Download NuGet package
+        uses: actions/download-artifact@v3
+        with:
+          name: contatodb-core-package
+          path: ./nuget-packages
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 8.0
+
+      - name: Add local NuGet source
+        run: dotnet nuget add source ./nuget-packages --name local-packages
 
       - name: Restore dependencies
         run: dotnet restore workers/Microservice.Cadastro.RemoverContato/Microservice.Cadastro.RemoverContato.sln
