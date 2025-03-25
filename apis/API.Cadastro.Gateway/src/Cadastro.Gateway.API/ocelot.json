@@ -6,6 +6,23 @@
     }
   },
   "Routes": [
+    // Azure Function
+    {
+      "DownstreamPathTemplate": "/api/contatos",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "apigetcontatos.azurewebsites.net",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/contatos",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamQueryStringsTransform": {
+        "ddd": "{ddd}",
+        "id": "{id}"
+      }
+    },
     // API.TESTE Weather *PROTEGIDO*
     {
       "DownstreamPathTemplate": "/WeatherForecast",
