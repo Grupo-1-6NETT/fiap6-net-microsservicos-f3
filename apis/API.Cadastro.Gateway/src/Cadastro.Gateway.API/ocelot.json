@@ -23,23 +23,6 @@
         "id": "{id}"
       }
     },
-    // API.TESTE Weather *PROTEGIDO*
-    {
-      "DownstreamPathTemplate": "/WeatherForecast",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "weather",
-          "Port": 8084
-        }
-      ],
-      "UpstreamPathTemplate": "/teste",
-      "UpstreamHttpMethod": [ "Get" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
-    },
     // API.AUTH.TOKEN
     {
       "DownstreamPathTemplate": "/Token",
