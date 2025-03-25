@@ -170,8 +170,15 @@ jobs:
         with:
           dotnet-version: 8.0
 
-      - name: Add local NuGet source
-        run: dotnet nuget add source ./nuget-packages --name local-packages
+      - name: Configure NuGet sources
+        run: |
+          # Remove any existing local source to avoid conflicts
+          dotnet nuget remove source local-packages || true
+          # Add the local source with the correct path
+          dotnet nuget add source ./nuget-packages --name local-packages
+
+      - name: List NuGet sources (for debugging)
+        run: dotnet nuget list source
 
       - name: Restore dependencies
         run: dotnet restore workers/Microservice.Cadastro.AdicionarContato/Microservice.Cadastro.AdicionarContato.sln
@@ -196,8 +203,15 @@ jobs:
         with:
           dotnet-version: 8.0
 
-      - name: Add local NuGet source
-        run: dotnet nuget add source ./nuget-packages --name local-packages
+      - name: Configure NuGet sources
+        run: |
+          # Remove any existing local source to avoid conflicts
+          dotnet nuget remove source local-packages || true
+          # Add the local source with the correct path
+          dotnet nuget add source ./nuget-packages --name local-packages
+
+      - name: List NuGet sources (for debugging)
+        run: dotnet nuget list source
 
       - name: Restore dependencies
         run: dotnet restore workers/Microservice.Cadastro.AtualizarContato/Microservice.Cadastro.AtualizarContato.sln
@@ -222,8 +236,15 @@ jobs:
         with:
           dotnet-version: 8.0
 
-      - name: Add local NuGet source
-        run: dotnet nuget add source ./nuget-packages --name local-packages
+      - name: Configure NuGet sources
+        run: |
+          # Remove any existing local source to avoid conflicts
+          dotnet nuget remove source local-packages || true
+          # Add the local source with the correct path
+          dotnet nuget add source ./nuget-packages --name local-packages
+
+      - name: List NuGet sources (for debugging)
+        run: dotnet nuget list source
 
       - name: Restore dependencies
         run: dotnet restore workers/Microservice.Cadastro.RemoverContato/Microservice.Cadastro.RemoverContato.sln
