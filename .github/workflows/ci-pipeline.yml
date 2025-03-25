@@ -22,10 +22,10 @@ jobs:
           dotnet-version: 8.0
 
       - name: Restore dependencies
-        run: dotnet restore apis/API.Cadastro.AdicionarContato/API.Cadastro.AdicionarContato.sln
+        run: dotnet restore apis/API.Cadastro.AdicionarContato/API.Cadastro.AdicionarContatos.sln
 
       - name: Build solution
-        run: dotnet build apis/API.Cadastro.AdicionarContato/API.Cadastro.AdicionarContato.sln --no-restore --configuration Release
+        run: dotnet build apis/API.Cadastro.AdicionarContato/API.Cadastro.AdicionarContatos.sln --no-restore --configuration Release
 
       - name: Run Unit Tests
         run: dotnet test apis/API.Cadastro.AdicionarContato/UnitTest/UnitTest.csproj --no-build --configuration Release
@@ -43,10 +43,10 @@ jobs:
           dotnet-version: 8.0
 
       - name: Restore dependencies
-        run: dotnet restore apis/API.Cadastro.AtualizarContato/API.Cadastro.AtualizarContato.sln
+        run: dotnet restore apis/API.Cadastro.AtualizarContato/API.Cadastro.AtualizarContatos.sln
 
       - name: Build solution
-        run: dotnet build apis/API.Cadastro.AtualizarContato/API.Cadastro.AtualizarContato.sln --no-restore --configuration Release
+        run: dotnet build apis/API.Cadastro.AtualizarContato/API.Cadastro.AtualizarContatos.sln --no-restore --configuration Release
 
       - name: Run Unit Tests
         run: dotnet test apis/API.Cadastro.AtualizarContato/UnitTest/UnitTest.csproj --no-build --configuration Release
@@ -64,10 +64,10 @@ jobs:
           dotnet-version: 8.0
 
       - name: Restore dependencies
-        run: dotnet restore apis/API.Cadastro.RemoverContato/API.Cadastro.RemoverContato.sln
+        run: dotnet restore apis/API.Cadastro.RemoverContato/API.Cadastro.RemoverContatos.sln
 
       - name: Build solution
-        run: dotnet build apis/API.Cadastro.RemoverContato/API.Cadastro.RemoverContato.sln --no-restore --configuration Release
+        run: dotnet build apis/API.Cadastro.RemoverContato/API.Cadastro.RemoverContatos.sln --no-restore --configuration Release
 
       - name: Run Unit Tests
         run: dotnet test apis/API.Cadastro.RemoverContato/UnitTest/UnitTest.csproj --no-build --configuration Release
