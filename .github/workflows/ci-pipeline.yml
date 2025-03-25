@@ -28,7 +28,7 @@ jobs:
         run: dotnet build apis/API.Cadastro.AdicionarContato/API.Cadastro.AdicionarContatos.sln --no-restore --configuration Release
 
       - name: Run Unit Tests
-        run: dotnet test apis/API.Cadastro.AdicionarContato/UnitTest/UnitTest.csproj --no-build --configuration Release
+        run: dotnet test apis/API.Cadastro.AdicionarContato/UnitTests/UnitTests.csproj --no-build --configuration Release
 
   build-and-test-atualizar-contato:
     runs-on: ubuntu-latest
@@ -49,7 +49,7 @@ jobs:
         run: dotnet build apis/API.Cadastro.AtualizarContato/API.Cadastro.AtualizarContatos.sln --no-restore --configuration Release
 
       - name: Run Unit Tests
-        run: dotnet test apis/API.Cadastro.AtualizarContato/UnitTest/UnitTest.csproj --no-build --configuration Release
+        run: dotnet test apis/API.Cadastro.AtualizarContato/UnitTests/UnitTests.csproj --no-build --configuration Release
 
   build-and-test-remover-contato:
     runs-on: ubuntu-latest
@@ -70,7 +70,7 @@ jobs:
         run: dotnet build apis/API.Cadastro.RemoverContato/API.Cadastro.RemoverContatos.sln --no-restore --configuration Release
 
       - name: Run Unit Tests
-        run: dotnet test apis/API.Cadastro.RemoverContato/UnitTest/UnitTest.csproj --no-build --configuration Release
+        run: dotnet test apis/API.Cadastro.RemoverContato/UnitTests/UnitTests.csproj --no-build --configuration Release
 
   build-and-test-auth-contato:
     runs-on: ubuntu-latest
@@ -128,4 +128,76 @@ jobs:
 
       - name: Build solution
         run: dotnet build apis/API.Cadastro.AzureFunction/API.Cadastro.AzureFunction.sln --no-restore --configuration Release
+
+  build-and-test-consumer-adicionarcontato-contato:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0
+
+      - name: Restore dependencies
+        run: dotnet restore workers/Microservice.Cadastro.AdicionarContato/Microservice.Cadastro.AdicionarContato.sln
+
+      - name: Build solution
+        run: dotnet build workers/Microservice.Cadastro.AdicionarContato/Microservice.Cadastro.AdicionarContato.sln --no-restore --configuration Release
+
+  build-and-test-consumer-atualizarcontato-contato:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0
+
+      - name: Restore dependencies
+        run: dotnet restore workers/Microservice.Cadastro.AtualizarContato/Microservice.Cadastro.AtualizarContato.sln
+
+      - name: Build solution
+        run: dotnet build workers/Microservice.Cadastro.AtualizarContato/Microservice.Cadastro.AtualizarContato.sln --no-restore --configuration Release
+
+  build-and-test-consumer-removercontato-contato:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0
+
+      - name: Restore dependencies
+        run: dotnet restore workers/Microservice.Cadastro.RemoverContato/Microservice.Cadastro.RemoverContato.sln
+
+      - name: Build solution
+        run: dotnet build workers/Microservice.Cadastro.RemoverContato/Microservice.Cadastro.RemoverContato.sln --no-restore --configuration Release
+
+  build-and-test-consumer-removercontato-contato:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0
+
+      - name: Restore dependencies
+        run: dotnet restore workers/ContatoDb.Core/ContatoDb.Core.sln
+
+      - name: Build solution
+        run: dotnet build workers/ContatoDb.Core/ContatoDb.Core.sln --no-restore --configuration Release
 
