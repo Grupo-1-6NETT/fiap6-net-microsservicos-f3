@@ -8,6 +8,7 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Adicionando a configuração do Ocelot
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 builder.Services.AddOcelot();
 
@@ -45,6 +46,9 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
+// Registro do middleware de Rate Limiting
+app.UseMiddleware<RateLimitingMiddleware>();
+
 app.UseMetricServer();
 app.UseHttpMetrics();
 
@@ -65,6 +69,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapMetrics();
+
 app.UseOcelot().Wait();
 
 app.Run();

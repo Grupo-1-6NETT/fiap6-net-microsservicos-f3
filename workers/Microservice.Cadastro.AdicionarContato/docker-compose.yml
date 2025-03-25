@@ -1,11 +1,11 @@
 services:
-  removercontatos: 
+  consumeradicionarcontatos: 
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "5010:8090"
-      - "5011:8091"
+      - "5092:8092"
+      - "5093:8093"
     networks:
       - monitoring
 networks:
