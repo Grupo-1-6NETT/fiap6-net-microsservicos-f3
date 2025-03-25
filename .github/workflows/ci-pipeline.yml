@@ -145,7 +145,7 @@ jobs:
       - name: Create NuGet package
         run: |
           mkdir -p ./nuget-packages
-          dotnet pack workers/ContatoDb.Core/ContatoDb.Core.csproj --configuration Release --output ./nuget-packages
+          dotnet pack workers/ContatoDb.Core/ContatoDb.Core/ContatoDb.Core.csproj --configuration Release --output ./nuget-packages
 
       - name: Upload NuGet package
         uses: actions/upload-artifact@v4
