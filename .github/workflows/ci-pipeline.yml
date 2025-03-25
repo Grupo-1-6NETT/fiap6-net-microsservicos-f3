@@ -183,7 +183,7 @@ jobs:
       - name: Build solution
         run: dotnet build workers/Microservice.Cadastro.RemoverContato/Microservice.Cadastro.RemoverContato.sln --no-restore --configuration Release
 
-  build-and-test-consumer-removercontato-contato:
+  build-and-test-consumer-contatodb-contato:
     runs-on: ubuntu-latest
 
     steps:
