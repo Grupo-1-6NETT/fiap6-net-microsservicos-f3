@@ -34,7 +34,7 @@ public class ContatoRepository(AppDbContext context) : IContatoRepository
     
     public async Task DeleteAsync(Guid id)
     {
-        var contato = await GetByIdAsync(id);
+        var contato = context.Contatos.FirstOrDefault(c => c.Id == id);
         if (contato is not null)
         {
             context.Set<Contato>().Remove(contato);
