@@ -37,7 +37,7 @@ public static class InfrastructureExtensions
         {
             var conn = new SqlConnection(connString);
             options.UseSqlServer(conn);
-        });            
+        });
 
         services.AddScoped<IContatoRepository, ContatoRepository>();
     }
