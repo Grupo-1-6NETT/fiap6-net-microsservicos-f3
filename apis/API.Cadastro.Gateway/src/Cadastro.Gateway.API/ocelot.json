@@ -16,7 +16,7 @@
           "Port": 443
         }
       ],
-      "UpstreamPathTemplate": "/contatos",
+      "UpstreamPathTemplate": "/Contatos",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamQueryStringsTransform": {
         "ddd": "{ddd}",
@@ -59,7 +59,7 @@
           "Port": 8082
         }
       ],
-      "UpstreamPathTemplate": "/usuario",
+      "UpstreamPathTemplate": "/Usuario",
       "UpstreamHttpMethod": [ "Delete" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer",
