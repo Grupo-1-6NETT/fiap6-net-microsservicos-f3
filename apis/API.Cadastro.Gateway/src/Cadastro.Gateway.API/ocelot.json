@@ -102,15 +102,15 @@
     },
     // API.Remover Contato *PROTEGIDO*
     {
-      "DownstreamPathTemplate": "/RemoverContato",
+      "DownstreamPathTemplate": "/RemoverContato/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "atualizarcontatos",
+          "Host": "removercontatos",
           "Port": 8090
         }
       ],
-      "UpstreamPathTemplate": "/RemoverContato",
+      "UpstreamPathTemplate": "/RemoverContato/{id}",
       "UpstreamHttpMethod": [ "Delete" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer",

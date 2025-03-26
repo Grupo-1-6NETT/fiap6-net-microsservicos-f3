@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
-    "Cadastro.Adicionar.Consumer": {
+    "Cadastro.Atualizar.Consumer": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "environmentVariables": {
