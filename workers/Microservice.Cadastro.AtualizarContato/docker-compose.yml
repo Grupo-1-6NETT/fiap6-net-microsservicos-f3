@@ -1,0 +1,13 @@
+services:
+  consumeratualizarcontatos: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5094:8094"
+      - "5095:8095"
+    networks:
+      - monitoring
+networks:
+  monitoring:
+    external: true 

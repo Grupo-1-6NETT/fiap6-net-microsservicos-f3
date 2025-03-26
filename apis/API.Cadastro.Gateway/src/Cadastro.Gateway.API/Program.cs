@@ -45,6 +45,8 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
+app.UseMiddleware<RateLimitingMiddleware>();
+
 app.UseMetricServer();
 app.UseHttpMetrics();
 

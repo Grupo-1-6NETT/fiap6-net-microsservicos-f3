@@ -1,0 +1,13 @@
+services:
+  consumeradicionarcontatos: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5092:8092"
+      - "5093:8093"
+    networks:
+      - monitoring
+networks:
+  monitoring:
+    external: true 

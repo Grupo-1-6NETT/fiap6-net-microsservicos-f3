@@ -1,6 +1,7 @@
 ﻿using ContatoDb.Core.Data;
 using ContatoDb.Core.Interfaces;
 using ContatoDb.Core.Repository;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -33,7 +34,10 @@ public static class InfrastructureExtensions
 
         // Adiciona o contexto do banco de dados
         services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(connString));
+        {
+            var conn = new SqlConnection(connString);
+            options.UseSqlServer(conn);
+        });
 
         services.AddScoped<IContatoRepository, ContatoRepository>();
     }

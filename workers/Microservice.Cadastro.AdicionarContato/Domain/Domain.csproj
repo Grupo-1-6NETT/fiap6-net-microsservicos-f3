@@ -7,9 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Reference Include="ContatoDb.Core">
-        <HintPath>..\..\ContatoDb.Core\ContatoDb.Core\bin\Release\net8.0\ContatoDb.Core.dll</HintPath>
-      </Reference>
+      <ProjectReference Include="..\ContatoDb.Core\ContatoDb.Core.csproj" />
     </ItemGroup>
 
 </Project>
