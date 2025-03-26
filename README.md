@@ -5,7 +5,7 @@ Este repositório contem um conjunto de aplicações que propõem solucionar o T
 Na imagem abaixo é ilustrada a arquitetura utilizada para orquestrar as aplicações:
 ![Diagrama Arquitetura](diagrama.png)
 
-
+## teste
 
 ## Índice
 - [Pré-requisitos](#pré-requisitos)

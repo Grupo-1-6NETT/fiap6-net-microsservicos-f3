@@ -4,7 +4,6 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>dotnet-Cadastro.Adicionar.Consumer-6d0d78fb-f2aa-4821-ad0b-80a87c00682c</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
